@@ -78,6 +78,7 @@ void PrintSimple(double *S) {
 
 long double SrGeom(double *arr){
     long double sum=0;
+    cout << "sum = " << sum << endl;
     for(int i=0; i<100; i++) sum=sum + log(arr[i]);
     sum=sum/100;
     return exp(sum);  
