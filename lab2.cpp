@@ -1,5 +1,6 @@
 #include <iostream>
 #include<cmath>
+#include <iomanip>
 using namespace std;
 const int k1 = 2000;
 const int k2 = 20;
@@ -19,15 +20,23 @@ int main() {
   double S[100];
   cout<<"Введите число"<<endl;
   cin>>n;
+  cout << "\n";
   int flag = SimpleNum(n);
-  if (flag == 1) cout<<"простое число"<<endl;
-  else cout<<"нихера"<<endl;
+  if (flag == 1) cout<<"Число '"<<n<<"' простое число"<<endl;
+  else cout<<"Число '"<<n<<"' не явдяется простым числом"<<endl;
+  cout << "\n";
   FirstK(S);
   PrintSimple(S);
+  cout << "\n";
+  cout << "---------------------------------------\n";
   cout<<"Среднее геометрическое равно: "<<SrGeom(S)<<endl;
+  cout << "---------------------------------------\n";
   cout<<"Среднее квадратическое равно: "<<SrSq(S)<<endl;
+  cout << "---------------------------------------\n";
   cout<<"Среднее арифметическое равно: "<<SrArith(S)<<endl;
+  cout << "---------------------------------------\n";
   cout<<"Среднее гармоническое равно: "<<SrHarm(S)<<endl;
+  cout << "---------------------------------------\n";
   return 0;
 }
 
@@ -48,37 +57,31 @@ void FirstK(double *S) {
   formulaMaxk1 = k1/(log(k1)-(1/2));
   formulaMink2 = k2*(log(k2)+log(log(k2))-(3/2.));
   formulaMaxk2 = k2*(log(k2)+log(log(k2))-(1/2.));
-  cout <<"formulaMink1 = " << formulaMink1 <<endl;
-  cout <<"formulaMaxk1 = " << formulaMaxk1 <<endl;
-  cout <<"formulaMink2 = " << formulaMink2 <<endl;
-  cout <<"formulaMaxk2 = " << formulaMaxk2 <<endl;
-  for(int i = 0, v = 0; i < k1, v < 100; i++) {
+  for(int i = 1, v = 0; i < k1, v < 100; i++) {
     flag = SimpleNum(i);
     if(flag == 1) {
       v++;
       S[m] = i;
       m++;
       if(v == k2) {
-        cout << "20 i = " << i <<endl;
-        if(formulaMink2 < i < formulaMaxk2) cout<<"Соответствует формуле"<<endl;
+        if(formulaMink2 < i < formulaMaxk2) cout<<"Соответствует формуле (4)"<<endl;
         else cout << "wtf" << endl;
         
       }
     }
   }
-  if (formulaMink1 < v < formulaMaxk1) cout<<"Соответствует формулам"<<endl;
+  if (formulaMink1 < v < formulaMaxk1) cout<<"Соответствует формулам (2) и (3)"<<endl;
 }
 
 void PrintSimple(double *S) {
   for(int i = 0; i<100; i++) {
-    cout << S[i] << "\t";
+    cout <<"|"<<setw(4) << S[i] << "|\t";
   }
   cout << "\n";
 }
 
 long double SrGeom(double *arr){
     long double sum=0;
-    cout << "sum = " << sum << endl;
     for(int i=0; i<100; i++) sum=sum + log(arr[i]);
     sum=sum/100;
     return exp(sum);  
