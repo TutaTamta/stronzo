@@ -5,14 +5,14 @@ using namespace std;
 const int k1 = 2000;
 const int k2 = 20;
 
-int SimpleNum(int m);
-void FirstK(double *S);
-void PrintSimple(double *S);
+int SimpleNum(int m); //проверка на просоту
+void KK(double *S); // сверка с формулами для чисел k1 и k2
+void PrintSimple(double *S); // вывод массива простых чисел
 
-long double SrGeom(double *arr);
-long double SrSq(double *arr);
-long double SrArith(double *arr);
-long double SrHarm(double *arr);
+long double SrGeom(double *arr); // среднее геометрическое
+long double SrSq(double *arr); // среднее квадратическое
+long double SrArith(double *arr); // среднее арифметическое
+long double SrHarm(double *arr); // среднее гармоническое 
 
 
 int main() {
@@ -23,9 +23,9 @@ int main() {
   cout << "\n";
   int flag = SimpleNum(n);
   if (flag == 1) cout<<"Число '"<<n<<"' простое число"<<endl;
-  else cout<<"Число '"<<n<<"' не явдяется простым числом"<<endl;
+  else cout<<"Число '"<<n<<"' не является простым числом"<<endl;
   cout << "\n";
-  FirstK(S);
+  KK(S);
   PrintSimple(S);
   cout << "\n";
   cout << "---------------------------------------\n";
@@ -41,15 +41,14 @@ int main() {
 }
 
 int SimpleNum(int m) {
+  if (m == 0) return 0;
   for (int i = 2; i <= sqrt(m); i++) {
-    if (m % i == 0) {
-      return 0; 
-    }
+    if (m % i == 0) return 0; 
   }
   return 1; 
 }
 
-void FirstK(double *S) {
+void KK(double *S) {
   int v, m, flag;
   float formulaMink1, formulaMink2, formulaMaxk1, formulaMaxk2;
   m = 0;
