@@ -1,0 +1,126 @@
+#include<iostream>
+#include<iomanip>
+#include<cmath>
+#include<string>
+using namespace std;
+const int arrSize=100;
+
+void Avges100();
+int Factorial(int num);
+int Fibonachi(int num);
+double Function(int dot);
+void Even(int num);
+
+int main(){
+   char ch='q';
+   do
+   {
+      cout<<"1. Вычислить средние значения 100 случайных чисел из диапазона от 1 до 100. \n";
+      cout<<"2. Вычислить 7!, 10!, 12!. \n";
+      cout<<"3. Вычислить числа Фибоначчи с номерами 6, 11, 41. \n";
+      cout<<"4. Вычислить значение функции f в точках 4, 12, 16, 32 согласно варианту 2. \n";
+      cout<<"5. Проверить на четность числа Фибоначчи с номерами 13 и 15. \n";
+      cout<<"q. Exit. \n";
+      cout<<"Enter ur choice: \n";
+      cin>>ch;
+      switch(ch)
+      {
+         case '1':
+            Avges100();
+            break;
+         case '2':
+            int num7=7, num10=10, num12=12;
+            cout<<"7! = "<<Factorial(num7)<<endl;
+            cout<<"10! = "<<Factorial(num10)<<endl;
+            cout<<"12! = "<<Factorial(num12)<<endl;
+            break;
+         case '3':
+            int num6=6, num11=11, num41=41;
+            cout<<"6-е число в последовательности Фибоначчи = "<<Fibonachi(num6)<<endl;
+            cout<<"11-е число в последовательности Фибоначчи = "<<Fibonachi(num6)<<endl;
+            cout<<"41-е число в последовательности Фибоначчи = "<<Fibonachi(num6)<<endl;
+            break;
+         case '4':
+            int dot1=4, dot2=12, dot3=16, dot4=32;
+            cout<<"Значение функции f в точке 4 = "<<Function(dot1)<<endl;
+            cout<<"Значение функции f в точке 12 = "<<Function(dot2)<<endl;
+            cout<<"Значение функции f в точке 16 = "<<Function(dot3)<<endl;
+            cout<<"Значение функции f в точке 32 = "<<Function(dot4)<<endl;
+            break;
+         case '5':
+            int num13=13, num15=15;            
+            cout<<"13-е число в последовательности Фибоначчи "<<Fibonacci(num13)<<" является "<<Even(Fibonacci(num13))<<endl;
+            cout<<"15-е число в последовательности Фибоначчи "<<Fibonacci(num15)<<" является "<<Even(Fibonacci(num15))<<endl;
+            break;
+         case 'q':
+            cout<<"Bb\n";
+            return(0);
+            break;
+         default:
+            cout<<"Rechoice\n";
+            break;
+      }
+   }
+   while(!(ch=='q'));
+}
+
+void Avges100()
+{
+    srand(time(0));
+    double *array;
+    array=new double[arrSize];
+    for(int i =0; i<arrSize;i++){
+        array[i]=rand()%100+1;
+        cout<<array[i]<<'\t';
+    }
+    cout<<endl;
+    long double sum=0;
+    for(int i =0; i<arrSize;i++){
+        sum+=1/array[i];
+    } 
+    cout<<"Среднее гармоническое = "<<arrSize/sum<<endl;
+    sum=0;
+    for(int i =0; i<arrSize;i++)
+        sum=sum+log(array[i]);
+    sum=sum/arrSize;
+    cout<<"Среднее геометрическое = "<<exp(sum)<<endl;
+    sum=0;
+    for(int i =0; i<arrSize;i++)
+        sum+=array[i];
+    cout<<"Среднее арифметическое = "<<sum/arrSize<<endl;
+    sum=0;
+    for(int i =0; i<arrSize;i++)
+        sum+=pow(array[i],2);
+    cout<<"Среднее квадратическое = "<<sqrt(sum/arrSize)<<endl;  
+    delete []arr;
+}
+int Factorial(int num)
+{
+    if(num==0) return 1;
+    else return num*Factorial(num-1);   
+}
+int Fibonacci(int num)
+{
+    /*int result=0, tmp1=1, tmp2=1;
+    for(int i=3; i<=num; i++)
+    {
+        result=tmp1+tmp2;
+        tmp1=tmp2;
+        tmp2=result;
+    }
+    return result;*/
+    if(num==1 || num==2) return 1;
+    else return Fibonacci(num-1)+Fibonacci(num-2);
+}
+double Function(int dot)
+{
+    if(dot<7) return Factorial(dot)/Fibonacci(dot);
+    else if(dot>=8 && dot<14) return Factorial(dot)/Pow(4,dot);
+    else if(dot>=15 && dot<31) return Pow(2,dot)/Fibonacci(dot);
+    else if(dot>=31) return 1;
+}
+string Even(int num)
+{
+    if(num%2==0)  return "четным";
+    else if(num%2!=0) return "нечетным";
+}
