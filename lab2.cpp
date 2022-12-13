@@ -96,7 +96,7 @@ long double SrSq(double *arr){
 long double SrArith(double *arr){
     long double sum=0;
     for(int i=0; i<100; i++) sum=sum + arr[i];
-    sum = sum/10;
+    sum = sum/100;
     return sum;
 }
 
