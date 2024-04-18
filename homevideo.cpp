@@ -5,7 +5,7 @@ using namespace std;
 
 void PrintMatrix(int arrSize, double **arr);
 
-long double SrGeom(double **arr, int arrSize); 
+long double SrGeom(double **arr, int arrSize);
 long double SrSq(double **arr, int arrSize); 
 long double SrArith(double **arr, int arrSize); 
 long double SrHarm(double **arr, int arrSize); 
