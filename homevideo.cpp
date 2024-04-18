@@ -23,7 +23,6 @@ int main(){
     cout << "Введите число: ";
     cin>>m;
     
-    //FullMatrix(arrSize);
 
     srand(time(0));
     double **A = new double* [arrSize];
